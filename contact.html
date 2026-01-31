@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trZkae - İletişim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        input::placeholder,
+        textarea::placeholder {
+            color: #000000;   /* placeholder rengi */
+            opacity: 1;       /* gri solukluğu kaldırır */
+}
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ca7317, #a51b1b); /* Light mod tutarlı */
+            color: #000000;
+            transition: all 0.5s ease;
+        }
+        .container {
+            max-width: 450px;
+            padding: 45px;
+            background: rgba(100, 148, 237, 0); /* Light mod container tutarlı */
+            border-radius: 45px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.556);
+            text-align: center;
+            transition: all 0.4s ease;
+            color: #000000;
+        }
+        .container:hover {
+            transform: scale(1);
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #000000bd, #000000ae);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.495);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input, textarea {
+            padding: 18px;
+            border: 2px solid #ffffff;
+            border-radius: 15px;
+            font-size: 1.2em;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            color: #020101;
+        }
+        input:focus, textarea:focus {
+            border-color: #000000;
+            box-shadow: 0 0 15px rgba(211, 193, 193, 0.3);
+            outline: none;
+        }
+        button {
+            padding: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.3em;
+            transition: background 0.4s ease, transform 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            background: linear-gradient(90deg, #00000000, #3333ffc4);
+            transform: translateY(-5px);
+        }
+        .back-btn {
+            margin-top: 30px;
+            background: linear-gradient(90deg, #ffffff, #ffffff);
+        }
+        .dark {
+            background: linear-gradient(135deg, #062f56, #120b4e);
+            color: #000000;
+        }
+        .dark .container {
+            background: rgba(198, 186, 186, 0);
+            color: #fffefe;
+        }
+        .dark input, .dark textarea {
+            background: #0000003b;
+            color: #ffffff;
+            border-color: #0c0b0b;
+        }
+        .dark h1 {
+            color: #ffffff;
+            background: none;
+            -webkit-background-clip: unset;
+            text-shadow: none;
+}
+
+        @media (max-width: 768px) {
+            .container { padding: 40px; }
+        }
+    /* TÜM INPUT & TEXTAREA PLACEHOLDER RENKLERİ */
+    input::placeholder,
+    textarea::placeholder {
+        color: #e6e6e6;
+        opacity: 1;
+}
+    /* Varsayılan: HER YERDE normal ok */
+* {
+    cursor: default;
+}
+
+/* Yazı yazılan alanlar */
+input,
+textarea {
+    cursor: text;
+}
+
+/* Tıklanabilirler */
+button {
+    cursor: pointer;
+}
+    /* Varsayılan: yazı seçimi kapalı */
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Form alanları NORMAL kalsın */
+input,
+textarea {
+    user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>İletişime Geç</h1>
+            
+        <p>Bana e-posta göndermek için formu doldur.</p>
+        <form action="https://formspree.io/f/xaqjvnql" method="POST" id="contactForm">
+            <input type="text" name="name" id="name" placeholder="Adın Soyadın" required>
+            <input type="email" name="email" id="email" placeholder="E-posta Adresin" required>
+            <textarea name="message" id="message" rows="7" placeholder="Mesajın" required></textarea>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Gönder</button>
+        </form>
+        <button class="back-btn" onclick="window.location.href='index.html';">Ana Sayfaya Dön</button>
+    </div>
+
+    <script>
+        if (localStorage.getItem('dark') === 'true') {
+            document.body.classList.add('dark');
+        }
+
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', function(event) {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Lütfen tüm alanları doldurun!');
+                event.preventDefault();
+                return;
+            }
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                alert('hayri7765@mail.com');
+                event.preventDefault();
+                return;
+            }
+
+            alert('Mailiniz yollandı!');
+        });
+    </script>
+<script>
+/* Sağ tık kapat */
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+/* Kısayollar kapalı */
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key)) ||
+        (e.ctrlKey && e.key === "U")
+    ) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+/* DevTools algılama */
+setInterval(function () {
+    const devtoolsOpen =
+        window.outerWidth - window.innerWidth > 160 ||
+        window.outerHeight - window.innerHeight > 160;
+
+    if (devtoolsOpen) {
+        document.body.innerHTML =
+            "<h1 style='text-align:center;margin-top:20%;color:white;'>🚫 Yetkisiz erişim algılandı</h1>";
+    }
+}, 500);
+</script>
+</body>
+</html>

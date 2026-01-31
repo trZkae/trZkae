@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trZkae - Ana Sayfa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ca7317, #a51b1b); /* Light mod tutarlı mor-mavi */
+            color: #000000; /* Light mod yazı koyu */
+            transition: all 0.5s ease;
+        }
+        header {
+            background: linear-gradient(90deg, #00000000, #ff000000); /* Light mod header tutarlı */
+            color: #000000; /* Light mod header yazı koyu */
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }   
+        }
+        @keyframes pulse {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            animation: fadeIn 1.5s ease;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.625);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        section {
+            max-width: 1050px;
+            margin: 50px auto;
+            padding: 50px;
+            background: rgba(143, 155, 175, 0.208); /* Light mod section tutarlı */
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            color: #000000;
+        }
+        section:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            padding: 18px 40px;
+            background: linear-gradient(90deg, #bfb4b4, #000000);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.3em;
+            transition: background 0.4s ease, transform 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            background: linear-gradient(90deg, #bfb4b4, #000000);
+            transform: scale(1.05);
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            z-index: 1000;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 50px 0;
+            font-size: 1.8em;
+        }
+        .social-links a, .social-links span {
+            color: #333333;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-links a:hover, .social-links span:hover {
+            color: #ffffff;
+            animation: shake 0.5s;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        .accordion {
+            margin-top: 40px;
+        }
+        .accordion-item {
+            border-bottom: 1px solid #ffffff00;
+            margin-bottom: 20px;
+        }
+        .accordion-header::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 25px;
+            width: calc(96.1% - 10px);
+            height: 1px;              /* 10px çok kalındı, 3 daha şık */
+            background: #ffffff;
+            border-radius: 10px;
+}
+
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            background: linear-gradient(90deg, #733636, #3333ff);
+            border-radius: 30px;
+            transition: background 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(12, 12, 12, 0.597);
+            .accordion-header::after {
+                bottom: -6px;          /* aşağı–yukarı */
+                left: 20px;            /* sağ–sol boşluk */
+                width: calc(100% - 40px); /* çizgi uzunluğu */
+                height: 10px;           /* kalınlık */
+}
+
+
+        }
+        .accordion-header:hover {
+            background: linear-gradient(90deg, #733636, #3333ff);
+        }
+        .accordion-header i {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.active i {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            display: none;
+            padding: 20px;
+            background: linear-gradient(90deg, #733636, #3333ff); /* Light mod accordion tutarlı */
+            border-radius: 30px;
+            color: #fdfdfd;
+            transition: all 0.5s ease;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 20px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .dark {
+            background: linear-gradient(135deg, #190d6e, #060e45);
+            color: #ddd;
+        }
+        .dark header {
+            background: linear-gradient(90deg, #12121204, #1e1e1e00); /* Dark header tutarlı (değiştirmedim) */
+            color: #ddd;
+        }
+        .dark section {
+            background: rgba(30, 30, 30, 0.95);
+            color: #ddd;
+        }
+        .dark .accordion-header {
+            background: linear-gradient(90deg, #222, #333);
+            color: #ddd;
+        }
+        .dark .accordion-content {
+            background: linear-gradient(90deg, #222, #333);
+            color: #ddd;
+        }
+        .dark .social-links a, .dark .social-links span {
+            color: #220ba4;
+        }
+        @media (max-width: 768px) {
+            header { padding: 80px 15px; }
+            section { padding: 30px; }
+            button { padding: 15px 30px; font-size: 1.2em; }
+        }
+        * {
+        cursor: default;
+          }
+        /* Varsayılan: yazı seçimi kapalı */
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Form alanları NORMAL kalsın */
+input,
+textarea {
+    user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+}
+    
+/
+}
+
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">☀ Light / 🌙 Dark</button>
+    <header>
+        <h1>trZkae'nin Sayfasına Hoşgeldin!</h1>
+        <p>Burası sitem ve kendi yaptıklarımı ve misyonumu paylaşıyorum.</p>
+        <button onclick="window.location.href='contact.html';">İletişime Geç</button>
+    </header>
+
+    <section id="about">
+        <h2>Hakkımda</h2>
+        <p>Merhaba! Ben trZkae, bir siber güvenlik uzmanıyım bir siteye red team olarak saldırma yada blue team olarak savunma yapabilirim.</p>
+        <p>Python, html, css ,js gibi kodlama dillerini biliyorum ve siyah şapkalı hacker olarak çalışıyorum.</p>
+    </section>
+
+    <section id="mission">
+        <h2>Misyonumuz</h2>
+        <p>Misyonumuz, Türk kültürünü dünyaya aşılamak, milli değerlerimizi korumak ve Türkiye'yi her platformda güçlü bir şekilde savunmaktır. Dijital alanda yenilikçi projelerle kültürel mirasımızı geleceğe taşımak, genç nesillere milli şuuru aşılamak ve uluslararası arenada ülkemizin haklı sesini yükseltmek amacıyla çalışıyoruz. Bu yolda, birlik ve beraberlik ruhuyla, tarihimizden ilham alarak modern teknolojileri kullanıyoruz ve Türkiyemizi siber saldırılardan korumaya çalışıyoruz.</p>
+    </section>
+
+    <section id="social">
+        <h2>Bana Ulaş</h2>
+        <div class="social-links">
+            <span><i class="fab fa-discord"></i> Discord: trZkae</span>
+        </div>
+        <p>Bana Discord'dan trZkae adıyla ulaşabilirsin yada bana iletişim yerinden ulaşabilirsin.  </p>
+    </section>
+
+    <section id="faq">
+        <h2>Merak Edilenler</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Bu site ne hakkında? <i class="fas fa-chevron-down"></i></div>
+                <div class="accordion-content">Site, trZkae'nin projelerini ve fikirlerini paylaştığı bir platform.</div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Nasıl iletişime geçebilirim? <i class="fas fa-chevron-down"></i></div>
+                <div class="accordion-content">"İletişime Geç" butonuna tıklayarak formu doldurabilirsin veya Discord üzerinden bana yazabilirsin.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Galeri</h2>
+        <p>4k Wallpaper</p>
+        <div class="gallery">
+            <img src="https://images.alphacoders.com/135/1354208.jpeg" alt="Uzay Resmi 1">
+            <img src="https://wallpapershome.com/images/pages/pic_h/26292.jpg" alt="Uzay Resmi 2">
+            <img src="https://images3.alphacoders.com/563/thumb-1920-563119.jpg" alt="Uzay Resmi 3">
+            <img src="https://images8.alphacoders.com/105/thumb-1920-1052046.jpg" alt="Uzay Resmi 4">
+            <img src="https://cdn.wallpapersafari.com/37/5/MULvAN.jpg" alt="Uzay Resmi 5">
+            <img src="https://cdn.mos.cms.futurecdn.net/vTti3KwUtSs4AVHppPtCfa-1200-80.jpg" alt="Uzay Resmi 6">
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; background: linear-gradient(90deg, #3333ff00, #ff00cc00); color: white; transition: all 0.5s ease;">
+        <p>&copy; 2026 trZkae. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('dark', document.body.classList.contains('dark'));
+        }
+        if (localStorage.getItem('dark') === 'true') {
+            document.body.classList.add('dark');
+        }
+
+        function toggleAccordion(header) {
+            header.classList.toggle('active');
+            const content = header.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+<script>
+/* Sağ tık kapat */
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+/* Kısayollar kapalı */
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key)) ||
+        (e.ctrlKey && e.key === "U")
+    ) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+/* DevTools algılama */
+setInterval(function () {
+    const devtoolsOpen =
+        window.outerWidth - window.innerWidth > 160 ||
+        window.outerHeight - window.innerHeight > 160;
+
+    if (devtoolsOpen) {
+        document.body.innerHTML =
+            "<h1 style='text-align:center;margin-top:20%;color:white;'>🚫 Yetkisiz erişim algılandı</h1>";
+    }
+}, 500);
+</script>
+
+</body>
+</html>
